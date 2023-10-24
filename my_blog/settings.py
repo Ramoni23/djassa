@@ -25,7 +25,7 @@ SECRET_KEY = '801_=72b&tq_zjww#)fw1p4m4yj31+%_s=1qv41(0-z4ot1mwj'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["127.0.0.1", "8507-2a01-e34-ecb6-2210-5171-f777-3471-b512.ngrok-free.app"] # publier notre app sur ngrok
 
 
 # Application definition

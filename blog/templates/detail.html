@@ -5,14 +5,39 @@
         <div class="row">
             <div class="col-md-8">
                 <h1 class="text-center mt-2"> Detail article </h1>
-                <img src="{{article.image.url}}" alt="" style="max-width:200;">
+                <img src="{{article.image.url}}" alt="" style="max-width: 250;">
                 <h2>{{article.title}}</h2>
                 <p>{{article.desc}}</p>
             </div>
 
-            <div class="col-md-4 mt-2">
-                <h3>Les articles similaires</h3>
+            <!--Afficher les articles en relation-->
+            <div class="col-md-4">
+                <h3 class="mt-2">Les articles similaires</h3 class="mt-2">
+                <div class="row">
+
+                    {% for art in article_en_relation %}
+                    <!--ne pas afficher l'article visualiser dans les articles associés -->
+                        {% if art.id != article.id %}
+                            <div class="col-md-7 mb-1">
+
+                                <!--mettre une image pour la category qui n'ont pas d'image-->
+                                {% if art.image != "http://default" %}
+                                    <img src="{{art.image.url}}" alt="" style="max-width: 200px;">
+                                {% else %}
+                                    <img src="https://via.placeholder.com/400x300" alt="Card image cap" style="max-width: 200px;">
+                                {% endif %}
+
+                            </div>
+                            <div class="col-5">
+                                <strong>{{ art.title}}</strong> <br>
+                                {{ art.desc|truncatewords:8 }}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+
+                </div>
             </div>
+
         </div>
     </div>
 
