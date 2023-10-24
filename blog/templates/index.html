@@ -10,10 +10,18 @@
         {% for article in list_articles%}
         <div class="col-12 col-md-6 col-lg-3 col-xl-3">
             <div class="card">
-                <!--ajout du lien detail sur l'image-->
+
+                <!--ajout du lien detail sur l'image en tenant compte des images par defaut -->
+                {% if article.image == "http://default"%}
+                <a href="{% url 'detail' article.id %}">
+                    <img src="http://via.placeholder.com/250x150" class="card-img-top" alt="..." style="height: 250px;">
+                </a>
+                {% else %}
                 <a href="{% url 'detail' article.id %}">
                     <img src="{{ article.image.url }}" class="card-img-top" alt="..." style="height: 250px;">
                 </a>
+                {% endif %}
+                
                 <div class="card-body" style="height: 220px;"> <!--mettre les articles à la même hauteur-->
                     <h5 class="card-title"> 
                         <!--ajout du lien detail sur le titre de l'article-->
